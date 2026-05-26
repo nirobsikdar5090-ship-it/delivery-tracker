@@ -1,0 +1,6 @@
+{
+  "name": "Delivery Tracker",
+  "description": "Progressive Web App to track daily, monthly deliveries and earnings offline and online.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

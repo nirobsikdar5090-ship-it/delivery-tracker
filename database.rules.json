@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        // Only the authenticated owner of this path can read or write their logs/settings
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        
+        // Strictly validate schema to prevent resource abuse or data poisoning
+        "email": {
+          ".validate": "newData.isString() && newData.val().length <= 150"
+        },
+        "price_per_piece": {
+          ".validate": "newData.isString() && newData.val().matches(/^[0-9]+$/) && newData.val().length <= 5"
+        },
+        "delivery_logs": {
+          // Keep string size limited to prevent massive payload storage abuse
+          ".validate": "newData.isString() && newData.val().length <= 1048576" 
+        }
+      }
+    }
+  }
+}
